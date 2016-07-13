@@ -24,4 +24,20 @@ Setup new project.
   * Check **Create Git repository** on (My Mac)
  ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/version_control.png "Project Details")
    
+## Step Two
+Setup CoreData
+
+ * File > New > File
+   * select iOS Source and Swift
+   * Name CoreDataStack
+   * import CoreData
+   * class creation code
+   * create constant variable "MovieWorld"
+   * managed object model 
+   * application document dir
+   * persistent store coordinator
+   * managed object context
+ * File > New > iOS CoreData and select Data Model
+  * name MovieWorld
+ * Instantiate CoreDataStack and print context name
 
