@@ -140,19 +140,22 @@ Add the following entities
 Add relationships
 
 ### Movie
+
 | relationship | Destination | Inverse | Type |
-|----------|:-------------:|:------:|
+|----------|:-------------:|:------:|:------:|
 | genre |  Genre | movies | To One |
 | rating |  Rating | movies | To One |
 
 ### Genre
+
 | relationship | Destination | Inverse | Type |
-|----------|:-------------:|:------:|
+|----------|:-------------:|:------:|:------:|
 | movies |  Movie | genre | To Many |
 
 ### Rating
+
 | relationship | Destination | Inverse | Type |
-|----------|:-------------:|:------:|
+|----------|:-------------:|:------:|:------:|
 | movies |  Movie | rating | To Many |
 
  ![Movie reationship ](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/movie_model_step_3.png "Movie relationship")
