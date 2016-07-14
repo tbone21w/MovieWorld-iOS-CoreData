@@ -103,16 +103,6 @@ Setup CoreData
    * Open AppDelegate.swift and delete all functions except didFinishLaunchingWithOptions 
    * Instantiate CoreData and print the context name
    ```swift
-     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-          let coreDataStack = CoreDataStack()
-          print("Context Name: \(coreDataStack.context.name!)")
-    
-          return true
-     }
-   ```
-   * run app and view console and verify the path to the database and the context name is printed out
-   ```swift
       func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
        let coreDataStack = CoreDataStack()
        print("Context Name: \(coreDataStack.context.name!)")
@@ -120,5 +110,6 @@ Setup CoreData
        return true
      }
    ```
-   * ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/console_step_2.png "Console")
+   * run app and view console to verify the path to the database and the context name is printed out
+   ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/console_step_2.png "Console")
 
