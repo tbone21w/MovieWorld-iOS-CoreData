@@ -163,7 +163,10 @@ Add relationships
   ![Genre relationship](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/genre_model_step_3.png "Genre relationship")
   
   Clear the simulator cache or delete the app and reinstall since we have not setup a migration.
+  
   Simulator > Reset Content and Settings
+  
   Build and Run
   
-  ## Step Four
+  
+## Step Four
