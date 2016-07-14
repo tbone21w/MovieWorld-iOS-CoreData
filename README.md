@@ -22,22 +22,103 @@ Setup new project.
    
  Save and add version control
   * Check **Create Git repository** on (My Mac)
- ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/version_control.png "Project Details")
+ ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/version_control.png "Version Control")
    
 ## Step Two
 Setup CoreData
-
- * File > New > File
-   * select iOS Source and Swift
+ * Create CoreDataStack class
+   * File > New > File
+   * select iOS Source and Swift 
    * Name CoreDataStack
    * import CoreData
-   * class creation code
-   * create constant variable "MovieWorld"
+   ```swift
+    import CoreData
+
+    class CoreDataStack {
+    
+    }
+   ```
+   * create constant variable **"MovieWorld"**
+   ```swift
+      class CoreDataStack {
+      
+      let modelName = "MovieWorld"
+   ```
    * managed object model 
+   ```swift
+     private lazy var managedObjectModel: NSManagedObjectModel = {
+    
+       let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
+    
+       return NSManagedObjectModel(contentsOfURL: modelURL)!
+     }()
+   ```
    * application document dir
+   ```swift
+     private lazy var applicationDocumentsDirectory: NSURL = {
+       let urls = NSFileManager
+                     .defaultManager()
+                     .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+       return urls.last!
+     }()
+   ```
    * persistent store coordinator
+   ```swift
+     private lazy var psc: NSPersistentStoreCoordinator = {
+    
+       let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+       let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.modelName)
+    
+       print("Persistant Store URL: \(url)")
+       do {
+         let options = [NSMigratePersistentStoresAutomaticallyOption : true]
+      
+         try coordinator.addPersistentStoreWithType(NSSQLiteStoreType,
+                                                 configuration: nil,
+                                                 URL: url,
+                                                 options: options)
+       } catch  {
+         print("Error adding persistent store.")
+       }
+    
+       return coordinator
+     }()
+   ```
    * managed object context
- * File > New > iOS CoreData and select Data Model
-  * name MovieWorld
+   ```swift
+     lazy var context: NSManagedObjectContext = {
+       var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+       managedObjectContext.persistentStoreCoordinator = self.psc
+       managedObjectContext.name = "Main Context"
+       managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+    
+      return managedObjectContext
+     }()
+   ```
+ * Create the CoreData Model
+  * File > New > iOS CoreData and select Data Model
+  * Select Next and name **MovieWorld** and save  (this matches the model name above)
+   ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/new_datamodel.png "New Data Model") 
  * Instantiate CoreDataStack and print context name
+   * Open AppDelegate.swift and delete all functions except didFinishLaunchingWithOptions 
+   * Instantiate CoreData and print the context name
+   ```swift
+     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+          let coreDataStack = CoreDataStack()
+          print("Context Name: \(coreDataStack.context.name!)")
+    
+          return true
+     }
+   ```
+   * run app and view console and verify the path to the database and the context name is printed out
+   ```swift
+      func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+       let coreDataStack = CoreDataStack()
+       print("Context Name: \(coreDataStack.context.name!)")
+       
+       return true
+     }
+   ```
+   * ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/console_step_2.png "Console")
 
