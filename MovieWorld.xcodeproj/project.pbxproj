@@ -14,6 +14,7 @@
 		32EA8E451D367020003D46F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA8E431D367020003D46F6 /* LaunchScreen.storyboard */; };
 		32EA8E4D1D36FD92003D46F6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA8E4C1D36FD92003D46F6 /* CoreDataStack.swift */; };
 		32EA8E501D3700B5003D46F6 /* MovieWorld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32EA8E4E1D3700B5003D46F6 /* MovieWorld.xcdatamodeld */; };
+		32EA8E521D37E057003D46F6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 32EA8E511D37E057003D46F6 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		32EA8E461D367020003D46F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32EA8E4C1D36FD92003D46F6 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		32EA8E4F1D3700B5003D46F6 /* MovieWorld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieWorld.xcdatamodel; sourceTree = "<group>"; };
+		32EA8E511D37E057003D46F6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				32EA8E3A1D367020003D46F6 /* AppDelegate.swift */,
 				32EA8E4E1D3700B5003D46F6 /* MovieWorld.xcdatamodeld */,
+				32EA8E511D37E057003D46F6 /* README.md */,
 				32EA8E3C1D367020003D46F6 /* ViewController.swift */,
 				32EA8E3E1D367020003D46F6 /* Main.storyboard */,
 				32EA8E411D367020003D46F6 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			files = (
 				32EA8E4D1D36FD92003D46F6 /* CoreDataStack.swift in Sources */,
 				32EA8E3D1D367020003D46F6 /* ViewController.swift in Sources */,
+				32EA8E521D37E057003D46F6 /* README.md in Sources */,
 				32EA8E3B1D367020003D46F6 /* AppDelegate.swift in Sources */,
 				32EA8E501D3700B5003D46F6 /* MovieWorld.xcdatamodeld in Sources */,
 			);
