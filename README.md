@@ -26,7 +26,9 @@ Setup new project.
 
 ## Step Two
 Setup CoreData
- * Create CoreDataStack class
+We will be creating a helper class to access the managed object context which is used to access CoreData. We will also be setting up the CoreData model which is use to create the mapping to the database.
+
+ * Create CoreDataStack class Swift file
    * File > New > File
    * select iOS Source and Swift
    * Name CoreDataStack
@@ -44,7 +46,7 @@ Setup CoreData
 
       let modelName = "MovieWorld"
    ```
-   * managed object model
+   * managed object model  (loads the data model named "MovieWord")
    ```swift
      private lazy var managedObjectModel: NSManagedObjectModel = {
 
@@ -62,14 +64,14 @@ Setup CoreData
        return urls.last!
      }()
    ```
-   * persistent store coordinator
+   * persistent store coordinator - coordinates the objects between the data store and the managed context.  Also verifies the data is in a consistent state.
    ```swift
      private lazy var psc: NSPersistentStoreCoordinator = {
 
        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.modelName)
 
-       print("Persistant Store URL: \(url)")
+       print("Persistent Store URL: \(url)")
        do {
          let options = [NSMigratePersistentStoresAutomaticallyOption : true]
 
@@ -84,7 +86,7 @@ Setup CoreData
        return coordinator
      }()
    ```
-   * managed object context
+   * managed object context - This is the context (object) the application works with to manipulate data.  It is usually described as a "scratch pad".  The objects are pulled from the persistent store and placed in the memory in the context where they may be changed.  If the changes are not saved, the persistent store remains unchanged. All objects must be registered with the context so any new objects will need to be registered.
    ```swift
      lazy var context: NSManagedObjectContext = {
        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -95,7 +97,7 @@ Setup CoreData
       return managedObjectContext
      }()
    ```
- * Create the CoreData Model
+ * Create the CoreData Model - This is used to make the mapping to the data store and the relations between the objects and much more.
   * File > New > iOS CoreData and select Data Model
   * Select Next and name **MovieWorld** and save  (this matches the model name above)
    ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/new_datamodel.png "New Data Model")
@@ -122,20 +124,25 @@ Setup CoreData
    ```
    * ![Single View Application](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/console_step_2.png "Console")
 
-   ## Step Three
-Setup data model
+## Step Three
+Define the data model.  
+NOTE: make change to the the .xcdatamodeld requires a migration.  We will not tackle that sine we are not deploying code.  Just remember to reset the the simulator (Simulator > Reset Content & Settings) or delete and reinstall the application.
 
-Open the MovieWorld data model MovieWorld.xcdatamodeld
+We will be creating the following data model:
+
+![ERD](https://github.com/tbone21w/MovieWorld-iOS-CoreData/raw/master/resources/erd.png "ERD")
+
+Open the MovieWorld data model **MovieWorld.xcdatamodeld**
 
 Add the following entities
 
 | Table   |      Attribute      |  Type |
 |----------|:-------------:|:------:|
-| Movie |  duration | Int32 |
+| **Movie** |  duration | Int32 |
 |       |  title | String |
-| Rating |  descr | String |
+| **Rating** |  descr | String |
 |       |  code | String |
-| Genre |  name | String |
+| **Genre** |  name | String |
 
 Add relationships
 
